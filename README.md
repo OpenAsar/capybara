@@ -6,7 +6,7 @@ Minimal replacement for Squirrel's Update.exe for launcher use only.
 
 - [X] `--processStart`
 - [X] `--process-start-args`
-- [ ] `--uninstall`
+- [X] `--uninstall`
 
 ## Out of Scope
 
