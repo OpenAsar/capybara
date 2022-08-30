@@ -12,7 +12,10 @@ if params.find("--uninstall") != -1:
 
 let processStart = params.find("--processStart")
 if processStart == -1:
-  quit(1)
+  echo "capybara: minimal replacement for Squirrel's Update.exe for launcher use only - https://github.com/OpenAsar/capybara"
+  echo "usage: capybara.exe --processStart [path] (--process-start-args ...)"
+  echo "eg: capybara.exe --processStart Discord.exe"
+  quit(0)
 
 let exeName = params[processStart + 1]
 
