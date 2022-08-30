@@ -23,7 +23,7 @@ jobs:
         tar --strip-components 1 -xf nim.zip
 
     - name: Build
-      run: .\nim.exe -d:release --opt:size c capybara.nim
+      run: .\bin\nim.exe -d:release --opt:size c capybara.nim
 
     - name: GitHub Release
       run: |
