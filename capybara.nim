@@ -8,7 +8,16 @@ let params = commandLineParams()
 
 let productName = lastPathPart(getAppDir())
 if params.find("--uninstall") != -1:
-  echo "no" # todo
+  echo "deleting registry values..." # these registry deletes are somewhat discord-specific but also somewhat general
+  discard execCmd("reg.exe delete HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Run /v " & productName & " /f") # auto run
+  discard execCmd("reg.exe delete HKCU\\Software\\Classes\\" & productName.replace("Canary", "").replace("PTB", "").replace("Development", "") & " /f") # protocol
+  discard execCmd("reg.exe delete HKCU\\Software\\Microsoft\\Windows\\CurrentVersion\\Uninstall\\" & productName & " /f") # uninstall program entry
+
+  echo "deleting dirs..." # delete dirs
+  removeDir(joinPath(getEnv("appdata"), productName.toLower())) # %appdata%\{lowered product name}
+
+  echo "deleting self... \\o" # launch detached process to remove our own directory as on Windows you can't delete directories with programs (ourself) open
+  discard startProcess("cmd.exe", args=["/s", "/c", "rmdir", "/q", "/s", getAppDir()])
   quit(0)
 
 let processStart = params.find("--processStart")
