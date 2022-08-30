@@ -3,11 +3,6 @@ name: Nightly
 on:
   push:
     branches: [ main ]
-    paths:
-    - 'src/**'
-    - 'scripts/**'
-    - 'poly/**'
-    - '.github/workflows/**'
 
 jobs:
   build:
