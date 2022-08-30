@@ -2,7 +2,7 @@ import os
 import osproc
 import strutils
 
-echo "capybara v0.1.0"
+echo "capybara v0.2.0"
 
 let params = commandLineParams()
 
