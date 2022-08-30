@@ -18,8 +18,9 @@ jobs:
     - uses: actions/checkout@v2
 
     - name: Setup Nim
-      run: curl https://nim-lang.org/download/nim-1.6.6_x64.zip -o nim.zip
-      tar --strip-components 1 -xf nim.zip
+      run: |
+        curl https://nim-lang.org/download/nim-1.6.6_x64.zip -o nim.zip
+        tar --strip-components 1 -xf nim.zip
 
     - name: Build
       run: .\nim.exe -d:release --opt:size c capybara.nim
