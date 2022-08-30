@@ -2,6 +2,8 @@ import os
 import osproc
 import strutils
 
+echo "capybara v0.1.0"
+
 let params = commandLineParams()
 
 if params.find("--uninstall") != -1:
