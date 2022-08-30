@@ -15,9 +15,9 @@ You can also pass your exe args with `--process-start-args ...` at the end.
 ### Uninstall
 Capybara also provides uninstalling via `--uninstall`. Values to delete and determined from the product name, gotten from the name of the folder it is in (eg: if it's in `Capy\capybara.exe`, it'll use product name `Capy`). This will automatically try to delete:
 - Registry values:
-  - Auto run / run on startup (HKCU\Software\Microsoft\Windows\CurrentVersion\Run > {product name})
-  - Protocol (HKCU\Software\Classes\\{product name})
-  - Uninstall program entry (HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\\{product name})
+  - Auto run / run on startup (`HKCU\Software\Microsoft\Windows\CurrentVersion\Run > {product name}`)
+  - Protocol (`HKCU\Software\Classes\{product name}`)
+  - Uninstall program entry (`HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\{product name}`)
 - Directories:
   - `%appdata%\\{lowercase product name}`
   - Own directory (directory containing itself)
