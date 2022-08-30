@@ -6,6 +6,7 @@ echo "capybara v0.2.0"
 
 let params = commandLineParams()
 
+let productName = lastPathPart(getAppDir())
 if params.find("--uninstall") != -1:
   echo "no" # todo
   quit(0)
@@ -14,7 +15,7 @@ let processStart = params.find("--processStart")
 if processStart == -1:
   echo "capybara: minimal replacement for Squirrel's Update.exe for launcher use only - https://github.com/OpenAsar/capybara"
   echo "usage: capybara.exe --processStart [path] (--process-start-args ...)"
-  echo "eg: capybara.exe --processStart Discord.exe"
+  echo "eg: capybara.exe --processStart " & productName & ".exe"
   quit(0)
 
 let exeName = params[processStart + 1]
