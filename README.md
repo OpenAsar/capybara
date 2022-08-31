@@ -45,7 +45,8 @@ Capybara will remove the start menu shortcut previously created via `--removeSho
 - [X] `--removeShortcut`
 - [X] `--setupIcon`
 
-## Out of Scope
+### Out of Scope
 
+- `--install`
 - `--update`
 - `--updateOnly`
