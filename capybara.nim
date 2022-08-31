@@ -52,12 +52,16 @@ let dir = joinPath(getAppDir(), "app-1.0." & $app)
 let createShortcut = params.find("--createShortcut")
 if createShortcut != -1:
   let exeName = params[createShortcut + 1] # exe path to link to
-  let ico = params[params.find("--setupIcon") + 1] # ico to use
+
+  var ico = "" # optional ico to use
+  let setupIcon = params.find("--setupIcon")
+  if setupIcon != -1:
+    ico = params[params.find("--setupIcon") + 1]
 
   createDir(joinPath(startShortcutPath, "..")) # create dir to shortcut
 
   # use powershell because apparently that's what everyone does
-  discard execCmd("powershell \"$s=(New-Object -COM WScript.Shell).CreateShortcut('" & startShortcutPath & "');$s.TargetPath='" & joinPath(dir, exeName) & "';$s.IconLocation='" & $ico & "';$s.WorkingDirectory='" & dir & "';$s.WindowStyle=1;$s.Save()\"")
+  discard execCmd("powershell \"$s=(New-Object -COM WScript.Shell).CreateShortcut('" & startShortcutPath & "');$s.TargetPath='" & joinPath(dir, exeName) & (if ico != "": ("';$s.IconLocation='" & $ico) else: "") & "';$s.WorkingDirectory='" & dir & "';$s.WindowStyle=1;$s.Save()\"")
 
   echo "created start menu shortcut at: ", startShortcutPath
   quit(0)
