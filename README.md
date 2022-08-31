@@ -1,5 +1,7 @@
 # capybara
-Minimal replacement for Squirrel's `Update.exe` for launcher use only. This is mostly intended for use as transitioning to your own updater from Squirrel, so you can still use the same path/exe (`Update.exe`) like before, without requiring any Squirrel code/updating/files, but this **does not follow Squirrel spec**/etc. This project is mostly focused on Discord but should apply generally to most apps.
+Minimal replacement for Squirrel's `Update.exe` for launcher use only. This is mostly intended for use as transitioning to your own updater from Squirrel, so you can still use the same path/exe (`Update.exe`) like before, but being self contained (just the exe) without requiring any own/Squirrel code/updating/files, but this **does not follow Squirrel spec**/etc. This project is mostly focused on Discord but should apply generally to most apps.
+
+<br>
 
 ## Usage
 
@@ -21,5 +23,29 @@ Capybara also provides uninstalling via `--uninstall`. Values to delete are dete
 - Directories:
   - `%appdata%\{lowercase product name}`
   - Own directory (directory containing itself)
+- Shortcuts:
+  - Start menu (`%appdata%\Microsoft\Windows\Start Menu\Programs\{product name} Inc\{product name with spaces}.lnk`)
+  - Desktop (`%userprofile%\Desktop\{product name with spaces}.lnk`)
 
 This does **not** follow the Squirrel spec (passing args to exe/etc), instead being self contained.
+
+### Shortcut Management (Start Menu)
+Capybara will create a start menu shortcut given a path (like process start) via `--createShortcut [exePath]` and also given a path to an ico via `--setupIcon [icoPath]` (should be absolute). Shortcut path: `%appdata%\Microsoft\Windows\Start Menu\Programs\{product name} Inc\{product name with spaces}.lnk` (see [Uninstall section](#uninstall) for more details).
+
+Capybara will remove the start menu shortcut previously created via `--removeShortcut` (path not needed for deletion).
+
+<br>
+
+## Implemented
+
+- [X] `--processStart`
+- [X] `--process-start-args`
+- [X] `--uninstall`
+- [X] `--createShortcut`
+- [X] `--removeShortcut`
+- [X] `--setupIcon`
+
+## Out of Scope
+
+- `--update`
+- `--updateOnly`
