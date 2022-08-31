@@ -1,5 +1,5 @@
 # capybara
-Minimal replacement for Squirrel's Update.exe for launcher use only.
+Minimal replacement for Squirrel's `Update.exe` for launcher use only.
 
 ## Usage
 
@@ -21,10 +21,3 @@ Capybara also provides uninstalling via `--uninstall`. Values to delete are dete
 - Directories:
   - `%appdata%\\{lowercase product name}`
   - Own directory (directory containing itself)
-
-
-## Implemented
-
-- [X] `--processStart`
-- [X] `--process-start-args`
-- [X] `--uninstall`
