@@ -1,5 +1,5 @@
 # capybara
-Minimal replacement for Squirrel's `Update.exe` for launcher use only.
+Minimal replacement for Squirrel's `Update.exe` for launcher use only. This is mostly intended for use as transitioning to your own updater from Squirrel, so you can still use the same path/exe (`Update.exe`) like before, without requiring any Squirrel code/updating/files.
 
 ## Usage
 
