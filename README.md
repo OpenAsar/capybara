@@ -19,5 +19,5 @@ Capybara also provides uninstalling via `--uninstall`. Values to delete are dete
   - Protocol (`HKCU\Software\Classes\{product name}`)
   - Uninstall program entry (`HKCU\Software\Microsoft\Windows\CurrentVersion\Uninstall\{product name}`)
 - Directories:
-  - `%appdata%\\{lowercase product name}`
+  - `%appdata%\{lowercase product name}`
   - Own directory (directory containing itself)
