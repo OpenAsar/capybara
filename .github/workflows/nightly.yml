@@ -3,6 +3,9 @@ name: Nightly
 on:
   push:
     branches: [ main ]
+    paths:
+    - '*.nim'
+    - '.github/workflows/**'
 
 jobs:
   build:
