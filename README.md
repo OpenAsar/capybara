@@ -30,9 +30,9 @@ Capybara also provides uninstalling via `--uninstall`. Values to delete are dete
 This does **not** follow the Squirrel spec (passing args to exe/etc), instead being self contained.
 
 ### Shortcut Management (Start Menu)
-Capybara will create a start menu shortcut given a path (like process start) via `--createShortcut [exePath]` and also given a path to an ico via `--setupIcon [icoPath]` (should be absolute). Shortcut path: `%appdata%\Microsoft\Windows\Start Menu\Programs\{product name} Inc\{product name with spaces}.lnk` (see [Uninstall section](#uninstall) for more details).
+Capybara will create a start menu shortcut given a path (like process start) via `--createShortcut [exePath]` and also optionally given a path to an ico to use for the shortcut with `--setupIcon [icoPath]` (should be absolute). Shortcut path: `%appdata%\Microsoft\Windows\Start Menu\Programs\{product name} Inc\{product name with spaces}.lnk`.
 
-Capybara will remove the start menu shortcut previously created via `--removeShortcut` (path not needed for deletion).
+Capybara will remove the start menu shortcut previously created via `--removeShortcut` (no extra args needed for deletion).
 
 <br>
 
