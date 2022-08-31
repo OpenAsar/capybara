@@ -1,5 +1,5 @@
 # capybara
-Minimal replacement for Squirrel's `Update.exe` for launcher use only. This is mostly intended for use as transitioning to your own updater from Squirrel, so you can still use the same path/exe (`Update.exe`) like before, without requiring any Squirrel code/updating/files.
+Minimal replacement for Squirrel's `Update.exe` for launcher use only. This is mostly intended for use as transitioning to your own updater from Squirrel, so you can still use the same path/exe (`Update.exe`) like before, without requiring any Squirrel code/updating/files, but this **does not follow Squirrel spec**/etc. This project is mostly focused on Discord but should apply generally to most apps.
 
 ## Usage
 
@@ -21,3 +21,5 @@ Capybara also provides uninstalling via `--uninstall`. Values to delete are dete
 - Directories:
   - `%appdata%\{lowercase product name}`
   - Own directory (directory containing itself)
+
+This does **not** follow the Squirrel spec (passing args to exe/etc), instead being self contained.
