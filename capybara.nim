@@ -1,8 +1,12 @@
 import os
 import osproc
 import strutils
+import winim/mean
 
-echo "capybara v2.1.0"
+AttachConsole(-1) # fix stdout in already opened cmd when compiling as a gui app
+discard stdout.reopen("CONOUT$", fmWrite)
+
+echo "capybara v2.2.0"
 
 let params = commandLineParams()
 
