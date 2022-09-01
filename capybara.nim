@@ -3,10 +3,10 @@ import osproc
 import strutils
 import winim/mean
 
-AttachConsole(-1) # fix stdout in already opened cmd when compiling as a gui app
-discard stdout.reopen("CONOUT$", fmWrite)
+if AttachConsole(-1).bool: # fix stdout in already opened cmd when compiling as a gui app
+  discard stdout.reopen("CONOUT$", fmWrite)
 
-echo "capybara v2.2.0"
+echo "capybara v2.2.1"
 
 let params = commandLineParams()
 
@@ -64,16 +64,13 @@ if createShortcut != -1:
 
   createDir(joinPath(startShortcutPath, "..")) # create dir to shortcut
 
-  # use powershell because apparently that's what everyone does
-  discard execCmd("powershell \"$s=(New-Object -COM WScript.Shell).CreateShortcut('" & startShortcutPath & "');$s.TargetPath='" & joinPath(dir, exeName) & (if ico != "": ("';$s.IconLocation='" & $ico) else: "") & "';$s.WorkingDirectory='" & dir & "';$s.WindowStyle=1;$s.Save()\"")
+  discard execCmd("powershell \"$s=(New-Object -COM WScript.Shell).CreateShortcut('" & startShortcutPath & "');$s.TargetPath='" & joinPath(dir, exeName) & (if ico != "": ("';$s.IconLocation='" & $ico) else: "") & "';$s.WorkingDirectory='" & dir & "';$s.WindowStyle=1;$s.Save()\"") # use powershell because apparently that's what everyone does
 
   echo "created start menu shortcut at: ", startShortcutPath
   quit(0)
 
 let removeShortcut = params.find("--removeShortcut")
 if removeShortcut != -1:
-  # let exeName = params[removeShortcut + 1] # exe path to link to
-
   removeFile(startShortcutPath)
   echo "deleted start menu shortcut at: ", startShortcutPath
   quit(0)
