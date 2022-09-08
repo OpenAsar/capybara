@@ -1,6 +1,7 @@
 import os
 import osproc
 import strutils
+import sequtils
 import winim/mean
 
 if AttachConsole(-1).bool: # fix stdout in already opened cmd when compiling as a gui app
@@ -36,22 +37,26 @@ if params.find("--uninstall") != -1:
   quit(0)
 
 
-var app = 0
+var app = newSeq[int]()
 for kind, path in walkDir(getAppDir()):
   case kind:
   of pcDir:
     let dir = lastPathPart(path)
-    if dir.startsWith("app-1.0."):
-      let ver = parseInt(dir.replace("app-1.0.", ""))
+    if dir.startsWith("app-"):
+      let ver = dir.replace("app-", "").split(".").map(parseInt)
 
-      if ver > app:
-        app = ver
+      for i in (0..ver.len-1):
+        if i >= app.len: app.add(0) # fix oob by defaulting to 0
+
+        if ver[i] > app[i]:
+          app = ver
+          break
+        elif app[i] > ver[i]: break
 
   else:
     discard
 
-let dir = joinPath(getAppDir(), "app-1.0." & $app)
-
+let dir = joinPath(getAppDir(), "app-" & $app.join("."))
 
 let createShortcut = params.find("--createShortcut")
 if createShortcut != -1:
