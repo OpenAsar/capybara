@@ -31,7 +31,7 @@ if params.find("--uninstall") != -1:
   removeFile(startShortcutPath) # start menu entry
   removeFile(desktopShortcutPath) # desktop shortcut
 
-  echo "deleting self... \\o" # launch detached process to remove our own directory as on Windows you can't delete directories with programs (ourself) open
+  echo "deleting own dir... \\o" # launch detached process to remove our own directory as on Windows you can't delete directories with programs (ourself) open
   discard startProcess("cmd.exe", args=["/s", "/c", "rmdir", "/q", "/s", getAppDir()])
   quit(0)
 
