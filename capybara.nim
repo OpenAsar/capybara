@@ -11,7 +11,7 @@ echo "capybara v3.0.0"
 
 let params = commandLineParams()
 
-let productName = lastPathPart(getAppDir())
+let productName = lastPathPart(getAppDir()) # name constants derived from parent directory name
 let pureName = productName.replace("Canary", "").replace("PTB", "").replace("Development", "")
 let spacedName = productName.replace("Canary", " Canary").replace("PTB", " PTB").replace("Development", " Development")
 let companyName = pureName & " Inc"
@@ -37,15 +37,15 @@ if params.find("--uninstall") != -1:
   quit(0)
 
 
-var app = newSeq[int]()
+var app = newSeq[int]() # find latest app- dir
 for kind, path in walkDir(getAppDir()):
   case kind:
   of pcDir:
     let dir = lastPathPart(path)
     if dir.startsWith("app-"):
-      let ver = dir.replace("app-", "").split(".").map(parseInt)
+      let ver = dir.replace("app-", "").split(".").map(parseInt) # app-1.2.3 -> [1, 2, 3]
 
-      for i in (0..ver.len-1):
+      for i in (0..ver.len-1): # check if version is newer following semver
         if i >= app.len: app.add(0) # fix oob by defaulting to 0
 
         if ver[i] > app[i]:
