@@ -83,7 +83,7 @@ if removeShortcut != -1:
 
 let processStart = params.find("--processStart")
 if processStart == -1:
-  echo "capybara: minimal replacement for Squirrel's Update.exe for launcher use only - https://github.com/OpenAsar/capybara"
+  echo "capybara: minimal replacement for Squirrel's Update.exe - https://github.com/OpenAsar/capybara"
   echo "usage you probably want: capybara.exe --processStart [path] (--process-start-args ...)"
   echo "eg: capybara.exe --processStart " & productName & ".exe"
   quit(0)
