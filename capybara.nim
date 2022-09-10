@@ -7,7 +7,7 @@ import winim/mean
 if AttachConsole(-1).bool: # fix stdout in already opened cmd when compiling as a gui app
   discard stdout.reopen("CONOUT$", fmWrite)
 
-echo "capybara v3.0.0"
+echo "capybara v3.0.1"
 
 let params = commandLineParams()
 
