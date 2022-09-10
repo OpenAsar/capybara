@@ -100,5 +100,5 @@ for arg in params:
   if arg == "--process-start-args":
     addingArgs = true
 
-echo "Starting ", joinPath(dir, exeName)
+echo "starting ", joinPath(dir, exeName)
 discard startProcess(joinPath(dir, exeName), workingDir=dir, args=argsToGive, options={poParentStreams, poEvalCommand})
